@@ -20,4 +20,15 @@ class AppAssets {
 
   static const String splashBg = '$imagesBase/bg.png';
   static const String splashLogo = '$imagesBase/splashLogo.png';
+  static const String send = '$iconsBase/send.svg';
+  static const String mic = '$iconsBase/mic.svg';
+  static const String grid = '$iconsBase/grid.svg';
+  static const String bar = '$iconsBase/bar.svg';
+  static const String feqh = '$iconsBase/feqh.svg';
+  static const String aqeda = '$iconsBase/aqeda.svg';
+  static const String sera = '$iconsBase/sera.svg';
+  static const String tarej = '$iconsBase/tarej.svg';
+  static const String luja = '$iconsBase/luja.svg';
+  static const String olomQuran = '$iconsBase/olomQuran.svg';
+  static const String message = '$iconsBase/message.svg';
 }

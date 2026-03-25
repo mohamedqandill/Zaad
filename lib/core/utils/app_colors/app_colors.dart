@@ -36,4 +36,6 @@ abstract class AppColors {
     end: Alignment.centerLeft,
     colors: [buttonStart, buttonEnd],
   );
+
+  static const Color chatBg = Color(0xFFF3E5F5);
 }

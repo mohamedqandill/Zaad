@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../features/auth/presentation/pages/auth_page.dart';
 import '../../features/splash/presentation/pages/splash_page.dart';
 import '../../features/welcome/presentation/welcome_page.dart';
+import '../../features/chatbot/presentation/chatbot_screen.dart';
 import 'app_routes.dart';
 
 class ScreenRoutes {
@@ -26,6 +27,11 @@ class ScreenRoutes {
       case AppRoutes.welcome:
         return MaterialPageRoute(
           builder: (_) => const WelcomePage(),
+          settings: settings,
+        );
+      case AppRoutes.chatbot:
+        return MaterialPageRoute(
+          builder: (_) => const ChatbotScreen(),
           settings: settings,
         );
       default:

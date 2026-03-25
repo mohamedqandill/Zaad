@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/routes/app_routes.dart';
 import 'widgets/welcome_mode_card.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -81,7 +82,11 @@ class _WelcomePageState extends State<WelcomePage> {
                   borderRadius: BorderRadius.circular(16.r),
                 ),
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    if (_selectedIndex != null) {
+                      Navigator.pushNamed(context, AppRoutes.chatbot);
+                    }
+                  },
                   borderRadius: BorderRadius.circular(16.r),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
