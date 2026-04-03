@@ -1,0 +1,452 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors/app_colors.dart';
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            // Background Image
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                AppAssets.topBg,
+                fit: BoxFit.cover,
+                height: 400.h,
+              ),
+            ),
+
+            SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20.h),
+                    // Avatar and Info
+                    _buildUserInfo(),
+                    SizedBox(height: 20.h),
+                    // Stats Row
+                    _buildStatsRow(),
+                    SizedBox(height: 30.h),
+                    // Sections
+                    _buildAccountSection(),
+                    SizedBox(height: 20.h),
+                    _buildPreferencesSection(),
+                    SizedBox(height: 20.h),
+                    _buildSupportSection(),
+                    SizedBox(height: 30.h),
+                    // Logout Footer
+                    _buildLogoutSection(),
+                    SizedBox(height: 40.h),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserInfo() {
+    return Column(
+      children: [
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: 100.w,
+              height: 100.w,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: AppColors.textGradient,
+              ),
+              child: Center(
+                child: Icon(
+                  Icons.person,
+                  size: 60.w,
+                  color: Colors.white.withOpacity(0.8),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 5.h,
+              left: 5.w,
+              child: Container(
+                width: 18.w,
+                height: 18.w,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF10B981),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2.w),
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 15.h),
+        Text(
+          'محمد قنديل',
+          style: TextStyle(
+            fontSize: 22.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 5.h),
+        Text(
+          'mohamedqandill912@gmail.com',
+          style: TextStyle(
+            fontSize: 14.sp,
+            color: Colors.white.withOpacity(0.8),
+          ),
+        ),
+        SizedBox(height: 10.h),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.star, color: Colors.amber, size: 16.sp),
+              SizedBox(width: 8.w),
+              Text(
+                'طالب العلم - المستوى المتقدم',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatsRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(
+          child: _buildStatCard(
+              value: '١٣٤', label: 'سؤال', iconPath: AppAssets.comment),
+        ),
+        Expanded(
+            child: _buildStatCard(
+                value: '٦', label: 'مجال', iconPath: AppAssets.book)),
+        Expanded(
+          child: _buildStatCard(
+              value: '٤٥', label: 'يوم متتالي', iconPath: AppAssets.calendar),
+        ),
+        Expanded(
+            child: _buildStatCard(
+                value: '٨٩٠', label: 'نقطة', iconPath: AppAssets.point)),
+      ],
+    );
+  }
+
+  Widget _buildStatCard(
+      {required String value,
+      required String label,
+      required String iconPath}) {
+    return Container(
+      width: 90.w,
+      padding: EdgeInsets.symmetric(vertical: 12.h),
+      margin: EdgeInsets.symmetric(horizontal: 5.w),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.85),
+        borderRadius: BorderRadius.circular(16.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            iconPath,
+            width: 24.w,
+            height: 24.w,
+            colorFilter:
+                const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12.sp,
+              color: const Color(0xFF6A1B9A),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h, right: 8.w),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade600,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAccountSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        _buildSectionHeader('الحساب'),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: Colors.grey.shade100),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                blurRadius: 1,
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              _buildListTile(
+                title: 'تعديل الملف الشخصي',
+                iconPath: AppAssets.user,
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'تغيير كلمة المرور',
+                iconPath: AppAssets.password,
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'البريد الإلكتروني',
+                iconPath: AppAssets.email,
+                trailingWidget: Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFA855F7),
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Text(
+                    'مفعل',
+                    style: TextStyle(color: Colors.white, fontSize: 12.sp),
+                  ),
+                ),
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'الخصوصية والأمان',
+                iconPath: AppAssets.privacy,
+                showArrow: false,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPreferencesSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        _buildSectionHeader('التفضيلات'),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: Colors.grey.shade100),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                blurRadius: 1,
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              _buildListTile(
+                title: 'الإشعارات',
+                iconPath: AppAssets.notification,
+                trailingWidget: Transform.scale(
+                  scale: 0.8,
+                  child: Switch(
+                    value: true,
+                    onChanged: (val) {},
+                    activeColor: Colors.white,
+                    activeTrackColor: const Color(0xFFA855F7),
+                  ),
+                ),
+                showArrow: false,
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'الوضع الداكن',
+                iconPath: AppAssets.mode,
+                trailingWidget: Transform.scale(
+                  scale: 0.8,
+                  child: Switch(
+                    value: false,
+                    onChanged: (val) {},
+                    activeColor: Colors.white,
+                    activeTrackColor: const Color(0xFFA855F7),
+                  ),
+                ),
+                showArrow: false,
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'اللغة',
+                iconPath: AppAssets.lang,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSupportSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        _buildSectionHeader('الدعم'),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: Colors.grey.shade100),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.4),
+                blurRadius: 1,
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              _buildListTile(
+                title: 'المساعدة والأسئلة الشائعة',
+                iconPath: AppAssets.help,
+              ),
+              _buildDivider(),
+              _buildListTile(
+                title: 'عن التطبيق',
+                iconPath: AppAssets.about,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLogoutSection() {
+    return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(color: Colors.grey.shade100),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.4),
+              blurRadius: 1,
+            ),
+          ],
+        ),
+        child: _buildListTile(
+            title: "تسجيل الخروج", iconPath: AppAssets.logout, isLogout: true));
+  }
+
+  Widget _buildListTile({
+    required String title,
+    required String iconPath,
+    Widget? trailingWidget,
+    bool showArrow = true,
+    bool isLogout = false,
+  }) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.h),
+      child: ListTile(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        onTap: () {},
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+        leading: SvgPicture.asset(
+          iconPath,
+          width: 24.w,
+          height: 24.w,
+        ),
+        title: Padding(
+          padding: EdgeInsets.only(right: 8.w),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: isLogout ? Colors.red : Colors.black87,
+            ),
+            textAlign: TextAlign.right,
+          ),
+        ),
+        trailing: trailingWidget ??
+            (showArrow
+                ? Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16.sp,
+                    color: Colors.grey,
+                  )
+                : const SizedBox.shrink()),
+      ),
+    );
+  }
+
+  Widget _buildDivider() {
+    return Divider(
+      height: 1,
+      thickness: 1,
+      color: Colors.grey.shade100,
+      indent: 20.w,
+      endIndent: 20.w,
+    );
+  }
+}

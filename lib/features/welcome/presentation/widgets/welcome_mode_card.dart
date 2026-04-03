@@ -89,7 +89,7 @@ class WelcomeModeCard extends StatelessWidget {
               style: TextStyle(
                 color: subtitleColor,
                 fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(height: 8.sp),

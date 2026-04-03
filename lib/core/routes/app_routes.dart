@@ -4,4 +4,5 @@ class AppRoutes {
   static const String signup = '/signup';
   static const String welcome = '/welcome';
   static const String chatbot = '/chatbot';
+  static const String profile = '/profile';
 }

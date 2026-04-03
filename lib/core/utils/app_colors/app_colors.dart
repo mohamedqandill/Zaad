@@ -14,10 +14,10 @@ abstract class AppColors {
     colors: [Color(0xFF3B82F6), Color(0xFFC54EEC)],
   );
   static const LinearGradient cardGradient = LinearGradient(
-    stops: [0.0, 0.97],
+    stops: [0.0, 0.0],
     colors: [
       Color(0xFFFAF5FF),
-      Color(0xFFAE91CE),
+      Color(0xFFF3E8FF),
     ],
   );
 

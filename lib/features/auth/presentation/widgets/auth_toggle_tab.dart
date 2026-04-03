@@ -22,7 +22,7 @@ class AuthToggleTab extends StatelessWidget {
                 ? const Color(0xFF1C1B1F)
                 : const Color(0xFF1C1B1F).withOpacity(0.35),
             fontWeight: FontWeight.w700,
-            fontSize: 14.sp,
+            fontSize: 16.sp,
           ),
         ),
       ),

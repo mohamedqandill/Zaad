@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors/app_colors.dart';
+import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class ChatbotAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatbotAppBar({super.key});
@@ -37,21 +38,26 @@ class ChatbotAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 16.w),
-          child: Container(
-            width: 40.w,
-            height: 40.w,
-            margin: EdgeInsets.all(8.w),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: AppColors.textGradient,
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(8.0.sp),
-              child: SvgPicture.asset(
-                AppAssets.user,
-                fit: BoxFit.cover,
-                colorFilter:
-                    const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.profile);
+            },
+            child: Container(
+              width: 40.w,
+              height: 40.w,
+              margin: EdgeInsets.all(8.w),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: AppColors.textGradient,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8.0.sp),
+                child: SvgPicture.asset(
+                  AppAssets.user,
+                  fit: BoxFit.cover,
+                  colorFilter:
+                      const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                ),
               ),
             ),
           ),

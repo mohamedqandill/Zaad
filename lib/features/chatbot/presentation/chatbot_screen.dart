@@ -34,6 +34,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: const ChatbotAppBar(),
       drawer: const ChatbotDrawer(),
@@ -55,7 +56,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             children: [
               SizedBox(height: 5.h),
               if (selectedFieldIndex != null)
-                SelectedFieldIndicator(title: fields[selectedFieldIndex!].title),
+                SelectedFieldIndicator(
+                    title: fields[selectedFieldIndex!].title),
               const Expanded(
                 child: Center(
                   child: SuggestedQuestionsList(),

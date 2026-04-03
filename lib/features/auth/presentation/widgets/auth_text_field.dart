@@ -58,8 +58,8 @@ class AuthTextField extends StatelessWidget {
               padding: EdgeInsets.all(14.sp),
               child: SvgPicture.asset(
                 iconAsset,
-                width: 24.w,
-                height: 24.h,
+                width: 20.w,
+                height: 20.h,
                 colorFilter: const ColorFilter.mode(
                   AppColors.primary,
                   BlendMode.srcIn,

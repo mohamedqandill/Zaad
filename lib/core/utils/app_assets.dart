@@ -31,4 +31,14 @@ class AppAssets {
   static const String luja = '$iconsBase/luja.svg';
   static const String olomQuran = '$iconsBase/olomQuran.svg';
   static const String message = '$iconsBase/message.svg';
+  static const String privacy = '$iconsBase/privacy.svg';
+  static const String notification = '$iconsBase/notification.svg';
+  static const String mode = '$iconsBase/mode.svg';
+  static const String lang = '$iconsBase/lang.svg';
+  static const String help = '$iconsBase/help.svg';
+  static const String logout = '$iconsBase/logout.svg';
+  static const String about = '$iconsBase/about.svg';
+  static const String calendar = '$iconsBase/calendar.svg';
+  static const String comment = '$iconsBase/comment.svg';
+  static const String point = '$iconsBase/point.svg';
 }
